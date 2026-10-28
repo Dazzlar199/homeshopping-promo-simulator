@@ -1,0 +1,11 @@
+{
+ "time": "2026-10-28T23:21:14",
+ "parser": "rules",
+ "model": null,
+ "n_cases": 100,
+ "case_accuracy": 1.0,
+ "field_accuracy": 1.0,
+ "n_fields": 800,
+ "api_calls": 0,
+ "fails": []
+}

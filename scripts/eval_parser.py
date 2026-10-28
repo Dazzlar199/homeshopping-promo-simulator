@@ -2,6 +2,7 @@
 import argparse
 import json
 import sys
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -44,6 +45,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--ai", action="store_true")
     ap.add_argument("--limit", type=int, default=100)
+    ap.add_argument("--out", help="결과를 JSON으로 저장할 경로(예: docs/parser_eval_ai.json)")
     a = ap.parse_args()
     cases = [json.loads(x) for x in (ROOT / "tests" / "parser_cases.jsonl").read_text(encoding="utf-8").splitlines() if x.strip()][: a.limit]
     if a.ai:
@@ -56,3 +58,11 @@ if __name__ == "__main__":
           + (f", API 호출 {agent.calls}회" if agent else ""))
     for t, d in fails[:10]:
         print(" 틀림:", t, d)
+    if a.out:
+        rec = {"time": datetime.now().isoformat(timespec="seconds"), "parser": "ai" if a.ai else "rules",
+               "model": __import__("promo_sim.agent", fromlist=["model_name"]).model_name() if a.ai else None,
+               "n_cases": len(cases), "case_accuracy": round(case_acc, 4), "field_accuracy": round(field_acc, 4),
+               "n_fields": len(cases) * len(FIELDS), "api_calls": agent.calls if agent else 0,
+               "fails": [{"text": t, "wrong_fields": d} for t, d in fails]}
+        Path(a.out).write_text(json.dumps(rec, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        print("저장:", a.out)

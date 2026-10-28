@@ -1,0 +1,18 @@
+{
+ "time": "2026-10-28T23:21:14",
+ "parser": "ai",
+ "model": "gpt-5.4-nano",
+ "n_cases": 10,
+ "case_accuracy": 0.9,
+ "field_accuracy": 0.9875,
+ "n_fields": 80,
+ "api_calls": 10,
+ "fails": [
+  {
+   "text": "밤 9시 방송, 이익률은 18% 이상, 상품 재고 1200개, 수익 위주로.",
+   "wrong_fields": [
+    "goal"
+   ]
+  }
+ ]
+}

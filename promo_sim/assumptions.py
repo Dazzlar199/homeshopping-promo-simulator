@@ -7,10 +7,10 @@ from __future__ import annotations
 
 SOURCES = {
     "ftc_commission": {
-        "label": "공정거래위원회 대규모유통업 판매수수료 실태조사(2024년 기준, 2025-12 발표) 보도 — TV홈쇼핑 실질수수료율 27.7%",
+        "label": "공정거래위원회 2025년 대형유통업체 판매수수료율 등 실태조사(2024년 거래 기준, 2025-12 발표) 보도 — TV홈쇼핑 실질수수료율 27.7%",
         "urls": [
-            "https://www.inews24.com/view/1068189",
             "https://news.mtn.co.kr/news-detail/2025122513185560099",
+            "https://view.asiae.co.kr/article/2025122514260320018",
         ],
         "note": "보도 기사로 확인. 공정위 보도자료 원문 대조는 남음. 상품군별 최신 수치는 확인 못 해 상품군 편차는 임의 설정.",
     },
